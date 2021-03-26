@@ -2,7 +2,7 @@
 
 <img src='imgs/teaser.png'/>
 
-### [Project Page](http://raywzy.com/ICT/) | [Paper (ArXiv)](https://arxiv.org/abs/2004.09484)
+### [Project Page](http://raywzy.com/ICT/) | [Paper (ArXiv)](https://arxiv.org/pdf/2103.14031.pdf)
 
 
 [Ziyu Wan](http://raywzy.com/)<sup>1</sup>,
@@ -29,5 +29,10 @@ Image completion has made tremendous progress with convolutional neural networks
 If you find our work useful for your research, please consider citing the following papers :)
 
 ```
-
+@article{wan2021highfidelity,
+  title={High-Fidelity Pluralistic Image Completion with Transformers},
+  author={Wan, Ziyu and Zhang, Jingbo and Chen, Dongdong and Liao, Jing},
+  journal={arXiv preprint arXiv:2103.14031},
+  year={2021}
+}
 ```
