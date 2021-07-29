@@ -13,9 +13,6 @@
 <sup>1</sup>City University of Hong Kong, <sup>2</sup>Microsoft Cloud AI
 
 
-## Pipeline
-<img src='imgs/Pipeline.png'/>
-
 
 ## :balloon: Prerequisites
 
@@ -32,9 +29,26 @@ mv anywhere/ckpts_ICT.zip root/ICT/.
 unzip ckpts_ICT.zip
 ```
 
+## :star2: Pipeline
+<img src='imgs/Pipeline.png'/>
+
+#### Why transformer?
+*Compared with traditional CNN-based methods, transformers have better capability in understanding shape and geometry.*
+<img src='imgs/structure.png'/>
+
+#### More results
+*FFHQ*
+<img src='imgs/FFHQ.png'/>
+
+*Places2*
+<img src='imgs/Places2.png'/>
+
+*ImageNet*
+<img src='imgs/Places2.png'/>
+
 ## :rocket: Training
 
-### 1) Transformer
+#### 1) Transformer
 
 ```
 cd Transformer
@@ -55,7 +69,7 @@ Notes of transformer:
 + `--random_stroke`: Generate the mask on-the-fly.
 + Ours codes are also ready for training on multiple machines.
 
-### 2) Guided Upsampling
+#### 2) Guided Upsampling
 
 ```
 cd Guided_Upsample
