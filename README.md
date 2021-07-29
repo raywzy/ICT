@@ -36,16 +36,6 @@ unzip ckpts_ICT.zip
 *Compared with traditional CNN-based methods, transformers have better capability in understanding shape and geometry.*
 <img src='imgs/structure.png'/>
 
-#### More results
-*FFHQ*
-<img src='imgs/FFHQ.png'/>
-
-*Places2*
-<img src='imgs/Places2.png'/>
-
-*ImageNet*
-<img src='imgs/Places2.png'/>
-
 ## :rocket: Training
 
 #### 1) Transformer
@@ -100,6 +90,18 @@ Notes of inference:
 + `--visualize_all`: You could save each output result via disabling this option.
 + `--ImageNet` `--FFHQ` `--Places2_Nature`: You must enable one option to select corresponding ckpts.
 + Please use absolute path.
+
+
+#### More results
+*FFHQ*
+<img src='imgs/FFHQ.png'/>
+
+*Places2*
+<img src='imgs/Places2.png'/>
+
+*ImageNet*
+<img src='imgs/ImageNet.png'/>
+
 
 ## :hourglass_flowing_sand: To Do
 - [x] Release training code
