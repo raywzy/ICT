@@ -1,9 +1,10 @@
-# High-Fidelity Pluralistic Image Completion with Transformers
+# Image Completion Transformer (ICT)
 
 <img src='imgs/teaser.png'/>
 
-### [Project Page](http://raywzy.com/ICT/) | [Paper (ArXiv)](https://arxiv.org/pdf/2103.14031.pdf)
+### [Project Page](http://raywzy.com/ICT/) | [Paper (ArXiv)](https://arxiv.org/pdf/2103.14031.pdf) | [Pre-trained Models]() | [Supplemental Material]()
 
+**This repository is the official pytorch implementation of our ICCV 2021 paper, *High-Fidelity Pluralistic Image Completion with Transformers*.**
 
 [Ziyu Wan](http://raywzy.com/)<sup>1</sup>,
 [Jingbo Zhang](https://github.com/Eckert-ZJB)<sup>1</sup>,
@@ -12,27 +13,113 @@
 <sup>1</sup>City University of Hong Kong, <sup>2</sup>Microsoft Cloud AI
 
 
-## Abstract
+## Pipeline
 <img src='imgs/Pipeline.png'/>
-Image completion has made tremendous progress with convolutional neural networks (CNNs), because of their powerful texture modeling capacity. However, due to some inherent properties (\eg, local inductive prior, spatial-invariant kernels), CNNs do not perform well in understanding global structures or naturally support pluralistic completion. Recently, transformers demonstrate their power in modeling the long-term relationship and generating diverse results, but their computation complexity is quadratic to input length, thus hampering the application in processing high-resolution images. This paper brings the best of both worlds to pluralistic image completion: appearance prior reconstruction with transformer and texture replenishment with CNN. The former transformer recovers pluralistic coherent structures together with some coarse textures, while the latter CNN enhances the local texture details of coarse priors guided by the high-resolution masked images. The proposed method vastly outperforms state-of-the-art methods in terms of three aspects: 1) large performance boost on image fidelity even compared to deterministic completion methods; 2) better diversity and higher fidelity for pluralistic completion; 3) exceptional generalization ability on large masks and generic dataset, like ImageNet.
 
 
+## :balloon: Prerequisites
 
-## To Do
-- [ ] Release testing code
-- [ ] Release pretrained model
-- [ ] Release training code
+- Python >=3.6
+- PyTorch >=1.6
+- NVIDIA GPU + CUDA cuDNN
+```bash
+pip install -r requirements.txt
+```
+
+To directly inference, first download the pretrained models from onedrive, then
+```bash
+mv anywhere/ckpts_ICT.zip root/ICT/.
+unzip ckpts_ICT.zip
+```
+
+## :rocket: Training
+
+### 1) Transformer
+
+```
+cd Transformer
+python main.py --name [exp_name] --ckpt_path [save_path] \
+               --data_path [training_image_path] \
+               --validation_path [validation_image_path] \
+               --mask_path [mask_path] \
+               --BERT --batch_size 64 --train_epoch 100 \
+               --nodes 1 --gpus 8 --node_rank 0 \
+               --n_layer [transformer_layer #] --n_embd [embedding_dimension] \
+               --n_head [head #] --ImageNet --GELU_2 \
+               --image_size [input_resolution]
+```
+
+Notes of transformer: 
++ `--AMP`: Reduce the memory cost while training, but sometimes will lead to NAN.
++ `--use_ImageFolder`: Enable this option while training on ImageNet
++ `--random_stroke`: Generate the mask on-the-fly.
++ Ours codes are also ready for training on multiple machines.
+
+### 2) Guided Upsampling
+
+```
+cd Guided_Upsample
+python train.py --model 2 --checkpoints [save_path] \
+                --config_file ./config_list/config_template.yml \
+                --Generator 4 --use_degradation_2
+```
+
+Notes of guided upsampling: 
++ `--use_degradation_2`: Bilinear downsampling. Try to match the transformer training.
++ `--prior_random_degree`: Stochastically deviate the sequence elements by K nearest neighbour.
++ Modify the provided config template according to your own training environments.
++ Training the upsample part won't cost many GPUs.
 
 
-## Citation
+## :zap: Inference
+
+We provide very covenient and neat script for inference.
+```
+python run.py --input_image [test_image_folder] \
+              --input_mask [test_mask_folder] \
+              --sample_num 1  --save_place [save_path] \
+              --ImageNet --visualize_all
+```
+
+Notes of inference: 
++ `--sample_num`: How many completion results do you want?
++ `--visualize_all`: You could save each output result via disabling this option.
++ `--ImageNet` `--FFHQ` `--Places2_Nature`: You must enable one option to select corresponding ckpts.
++ Please use absolute path.
+
+## :hourglass_flowing_sand: To Do
+- [x] Release training code
+- [x] Release testing code
+- [ ] Release pre-trained models
+
+
+## :notebook_with_decorative_cover: Citation
 
 If you find our work useful for your research, please consider citing the following papers :)
 
-```
-@article{wan2021highfidelity,
+```bibtex
+@article{wan2021high,
   title={High-Fidelity Pluralistic Image Completion with Transformers},
   author={Wan, Ziyu and Zhang, Jingbo and Chen, Dongdong and Liao, Jing},
   journal={arXiv preprint arXiv:2103.14031},
   year={2021}
 }
 ```
+The real-world application of image inpainting is also ready! Try and cite our **old photo restoration** algorithm [here](https://github.com/microsoft/Bringing-Old-Photos-Back-to-Life). 
+
+```bibtex
+@inproceedings{wan2020bringing,
+title={Bringing Old Photos Back to Life},
+author={Wan, Ziyu and Zhang, Bo and Chen, Dongdong and Zhang, Pan and Chen, Dong and Liao, Jing and Wen, Fang},
+booktitle={Proceedings of the IEEE/CVF Conference on Computer Vision and Pattern Recognition},
+pages={2747--2757},
+year={2020}
+}
+```
+## :bulb: Acknowledgments
+
+*This repo is built upon [minGPT](https://github.com/karpathy/minGPT) and [Edge-Connect](https://github.com/knazeri/edge-connect). We also thank the provided cluster centers from [OpenAI](https://github.com/openai/image-gpt).*
+
+## :incoming_envelope: Contact
+
+This repo is currently maintained by Ziyu Wan ([@Raywzy](https://github.com/raywzy)) and is for academic research use only. Discussions and questions are welcome via raywzy@gmail.com. 
