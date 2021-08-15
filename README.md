@@ -2,7 +2,7 @@
 
 <img src='imgs/teaser.png'/>
 
-### [Project Page](http://raywzy.com/ICT/) | [Paper (ArXiv)](https://arxiv.org/pdf/2103.14031.pdf) | [Pre-trained Models]() | [Supplemental Material]()
+### [Project Page](http://raywzy.com/ICT/) | [Paper (ArXiv)](https://arxiv.org/pdf/2103.14031.pdf) | [Pre-trained Models](https://www.dropbox.com/s/cqjgcj0serkbdxd/ckpts_ICT.zip?dl=0) | [Supplemental Material](http://raywzy.com/ICT/supple.pdf)
 
 **This repository is the official pytorch implementation of our ICCV 2021 paper, *High-Fidelity Pluralistic Image Completion with Transformers*.**
 
@@ -23,11 +23,18 @@
 pip install -r requirements.txt
 ```
 
-To directly inference, first download the pretrained models from onedrive, then
+To directly inference, first download the pretrained models from Dropbox, then
 ```bash
-mv anywhere/ckpts_ICT.zip root/ICT/.
+cd ICT
+wget -O ckpts_ICT.zip https://www.dropbox.com/s/cqjgcj0serkbdxd/ckpts_ICT.zip?dl=1
 unzip ckpts_ICT.zip
 ```
+
+Some tips:
++ Masks should be binarized.
++ The extensions of images and masks should be `.png`.
++ The model is trained for `256x256` input resolution only.
++ Make sure that the downsampled (`32x32` or `48x48`) mask could cover all the regions you want to fill. If not, dilate the mask.
 
 ## :star2: Pipeline
 <img src='imgs/Pipeline.png'/>
@@ -106,7 +113,7 @@ Notes of inference:
 ## :hourglass_flowing_sand: To Do
 - [x] Release training code
 - [x] Release testing code
-- [ ] Release pre-trained models
+- [x] Release pre-trained models
 
 
 ## :notebook_with_decorative_cover: Citation
