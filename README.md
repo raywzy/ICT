@@ -64,7 +64,7 @@ Notes of transformer:
 + `--AMP`: Reduce the memory cost while training, but sometimes will lead to NAN.
 + `--use_ImageFolder`: Enable this option while training on ImageNet
 + `--random_stroke`: Generate the mask on-the-fly.
-+ Ours codes are also ready for training on multiple machines.
++ Our code is also ready for training on multiple machines.
 
 #### 2) Guided Upsampling
 
@@ -114,7 +114,7 @@ Notes of inference:
 - [x] Release training code
 - [x] Release testing code
 - [x] Release pre-trained models
-- [] Add Google Colab
+- [ ] Add Google Colab
 
 ## :notebook_with_decorative_cover: Citation
 
