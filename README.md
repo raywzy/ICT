@@ -114,7 +114,7 @@ Notes of inference:
 - [x] Release training code
 - [x] Release testing code
 - [x] Release pre-trained models
-
+- [] Add Google Colab
 
 ## :notebook_with_decorative_cover: Citation
 
