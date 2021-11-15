@@ -7,7 +7,6 @@ import torch
 import matplotlib.pyplot as plt
 import logging
 from utils.util import set_seed
-from datas.dataset import ImageDataset
 from models.model import GPTConfig,GPT
 import argparse
 from utils.util import sample_mask,sample_mask_all
