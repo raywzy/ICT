@@ -2,7 +2,7 @@
 
 <img src='imgs/teaser.png'/>
 
-### [Project Page](http://raywzy.com/ICT/) | [Paper (ArXiv)](https://arxiv.org/pdf/2103.14031.pdf) | [Pre-trained Models](https://www.dropbox.com/s/cqjgcj0serkbdxd/ckpts_ICT.zip?dl=0) | [Supplemental Material](http://raywzy.com/ICT/supple.pdf)
+### [Project Page](http://raywzy.com/ICT/) | [Paper (ArXiv)](https://arxiv.org/pdf/2103.14031.pdf) | [Pre-trained Models](https://www.dropbox.com/s/we886b1fqf2qyrs/ckpts_ICT.zip?dl=0) :fire: | [Supplemental Material](http://raywzy.com/ICT/supple.pdf)
 
 **This repository is the official pytorch implementation of our ICCV 2021 paper, *High-Fidelity Pluralistic Image Completion with Transformers*.**
 
@@ -26,7 +26,7 @@ pip install -r requirements.txt
 To directly inference, first download the pretrained models from Dropbox, then
 ```bash
 cd ICT
-wget -O ckpts_ICT.zip https://www.dropbox.com/s/cqjgcj0serkbdxd/ckpts_ICT.zip?dl=1
+wget -O ckpts_ICT.zip https://www.dropbox.com/s/we886b1fqf2qyrs/ckpts_ICT.zip?dl=1
 unzip ckpts_ICT.zip
 ```
 
