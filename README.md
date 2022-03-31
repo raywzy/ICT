@@ -30,6 +30,8 @@ wget -O ckpts_ICT.zip https://www.dropbox.com/s/we886b1fqf2qyrs/ckpts_ICT.zip?dl
 unzip ckpts_ICT.zip
 ```
 
+If Dropbox doesn't work for you, please try the [Baidu Driver](https://pan.baidu.com/s/1SK1J5Gzy6GiXgaDcwjcs0g). Verification Code: 6g4f
+
 Some tips:
 + Masks should be binarized.
 + The extensions of images and masks should be `.png`.
