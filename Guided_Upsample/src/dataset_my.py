@@ -1,6 +1,5 @@
 import os
 import glob
-import scipy
 import torch
 import random
 import numpy as np

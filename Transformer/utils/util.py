@@ -9,7 +9,6 @@ import sys
 import cv2
 from PIL import Image
 import glob
-import scipy
 
 
 def set_seed(seed):

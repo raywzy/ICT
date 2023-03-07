@@ -7,7 +7,6 @@ import torchvision.transforms as transforms
 import numpy as np
 import random
 from io import BytesIO
-from scipy import ndimage, misc
 import argparse
 import os
 
