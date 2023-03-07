@@ -31,6 +31,7 @@ unzip ckpts_ICT.zip
 ```
 
 If Dropbox doesn't work for you, please try the [Baidu Driver](https://pan.baidu.com/s/1SK1J5Gzy6GiXgaDcwjcs0g). Verification Code: 6g4f
+
 Another option to download the checkpoints is using [OneDrive](https://portland-my.sharepoint.com/:u:/g/personal/ziyuwan2-c_my_cityu_edu_hk/EV2U1HBKxgFJsw3A1YjGXJgBoc5GOW6SYSPVv1syqnen3w?e=w8Cefs).
 
 Some tips:
